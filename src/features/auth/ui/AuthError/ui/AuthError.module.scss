@@ -1,0 +1,16 @@
+.error {
+    margin: 10px 0 35px;
+    font-size: 16px;
+    min-height: 22px;
+    line-height: 22px;
+    word-wrap: break-word;
+}
+
+@media (max-width: 500px) {
+    .error {
+        margin: 10px 0 30px;
+        font-size: 15px;
+        min-height: 18px;
+        line-height: 18px;
+    }
+}
