@@ -2,13 +2,19 @@ export const APP_ROUTES = {
     login: '/auth/login',
     register: '/auth/register',
 
-    userMain: '/user',
-    userOrgs: '/user/organizations',
-    userEvents: '/user/events',
-    userEvent: '/user/event/',
-    userProf: '/user/profile',
+    main: '/main',
+    set: '/main/set',
 
-    ownMain: '/own',
-    ownInf: '/own/infrastructure',
-    ownMembers: '/own/members',
+    control: '/control',
+    members: '/control/members',
+    rooms: '/control/rooms',
+    events: '/control/events',
+
+    meetings: '/meetings',
+    myOwn: '/meetings/myown',
+    meeting: '/meetings/meeting',
+
+    profile: '/profile',
+    organizations: '/profile/organizations',
+    invitations: '/profile/invitations',
 };

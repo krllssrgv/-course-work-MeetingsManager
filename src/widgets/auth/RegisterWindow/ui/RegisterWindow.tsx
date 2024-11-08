@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { InputsContainer, AuthError, RegAsOrg } from '@features';
+import { InputsContainer, AuthError } from '@features';
 import { LongButton, TextInput, API_URL, APP_ROUTES } from '@shared';
 
 export const RegisterWindow = () => {
@@ -10,7 +10,6 @@ export const RegisterWindow = () => {
     const [name, setName] = useState('');
     const [lastname, setLastname] = useState('');
     const [fathername, setFathername] = useState('');
-    const [asOrg, setAsOrg] = useState(false);
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
@@ -33,7 +32,6 @@ export const RegisterWindow = () => {
                         name: name,
                         lastname: lastname,
                         fathername: fathername,
-                        as_org: asOrg,
                     }),
                 });
 
@@ -99,7 +97,6 @@ export const RegisterWindow = () => {
                     setValue={setFathername}
                 />
             </InputsContainer>
-            <RegAsOrg asOrg={asOrg} setAsOrg={setAsOrg} />
             <AuthError error={error} />
             <LongButton
                 func={registerHandle}
