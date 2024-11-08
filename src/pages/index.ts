@@ -1,18 +1,28 @@
+// Layouts
+export { GeneralLayout } from './layouts/GeneralLayout';
+export { AuthLayout } from './layouts/AuthLayout';
+export { ControlLayout } from './layouts/ControlLayout';
+
 // Auth
-export { AuthLayout } from './auth/AuthLayout';
 export { LoginPage } from './auth/LoginPage';
 export { RegisterPage } from './auth/RegisterPage';
 
-// Own
-export { InfrastructurePage } from './own/InfrastructurePage';
-export { MainOwnPage } from './own/MainOwnPage';
-export { MembersPage } from './own/MembersPage';
-export { OwnLayout } from './own/OwnLayout';
+// Main
+export { MainPage } from './main/MainPage';
+export { SetPage } from './main/SetPage';
 
-// User
-export { EventPage } from './user/EventPage';
-export { EventsPage } from './user/EventsPage';
-export { MainUserPage } from './user/MainUserPage';
-export { OrganizationsPage } from './user/OrganizationsPage';
-export { ProfilePage } from './user/ProfilePage';
-export { UserLayout } from './user/UserLayout';
+// Control
+export { ControlPage } from './control/ControlPage';
+export { EventsPage } from './control/EventsPage';
+export { MembersPage } from './control/MembersPage';
+export { RoomsPage } from './control/RoomsPage';
+
+// Meetings
+export { MeetingsPage } from './meetings/MeetingsPage';
+export { OwnMeetingsPage } from './meetings/OwnMeetingsPage';
+export { MeetingPage } from './meetings/MeetingPage';
+
+// Profile
+export { ProfilePage } from './profile/ProfilePage';
+export { OrganizationsPage } from './profile/OrganizationsPage';
+export { InvitationsPage } from './profile/InvitationsPage';
