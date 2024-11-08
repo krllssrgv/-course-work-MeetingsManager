@@ -1,2 +1,4 @@
-export { LoginWindow } from './auth/LoginWindow';
-export { RegisterWindow } from './auth/RegisterWindow';
+export { LoginWindow } from './LoginWindow';
+export { RegisterWindow } from './RegisterWindow';
+export { Header } from './Header';
+export { LeftMenu } from './LeftMenu';

@@ -1,6 +1,9 @@
 import { Outlet, Navigate, useLocation } from 'react-router-dom';
+import { Header, LeftMenu } from '@widgets';
 import { selectUser } from '@entities';
 import { useAppSelector, APP_ROUTES } from '@shared';
+import styles from './GeneralLayout.module.scss';
+
 
 export const GeneralLayout = () => {
     const user = useAppSelector(selectUser);
@@ -16,9 +19,16 @@ export const GeneralLayout = () => {
         );
     } else {
         return (
-            <>
-                <Outlet />
-            </>
+            <div className={styles.container}>
+                <Header />
+                <div className={styles.page}>
+                    <LeftMenu />
+
+                    <main className={styles.content}>
+                        <Outlet />
+                    </main>
+                </div>
+            </div>
         );
     }
 };

@@ -1,2 +1,4 @@
-export { InputsContainer } from './auth/ui/InputsContainer';
-export { AuthError } from './auth/ui/AuthError';
+export { InputsContainer } from './InputsContainer';
+export { AuthError } from './AuthError';
+export { HeaderLink } from './HeaderLink';
+export { MenuLink } from './MenuLink';
