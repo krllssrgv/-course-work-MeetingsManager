@@ -11,3 +11,4 @@ export { TextInput } from './ui/TextInput';
 
 // Img
 export { default as orangeLoadingImg } from './img/orange_loading.png';
+export { default as headerProfile } from './img/header_profile.png';

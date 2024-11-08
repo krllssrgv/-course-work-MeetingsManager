@@ -27,6 +27,7 @@ export const App = () => {
                         />
                     </Route>
                     <Route path="/" element={<Pages.GeneralLayout />}>
+                        <Route index element={<Navigate to="/auth/login" replace />} />
                         <Route path="main" element={<Outlet />}>
                             <Route index element={<Pages.MainPage />} />
                             <Route path="set" element={<Pages.SetPage />} />
