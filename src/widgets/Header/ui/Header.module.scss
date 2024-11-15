@@ -7,16 +7,18 @@
     gap: 30px;
 }
 
-
 .logo {
     width: 125px;
+    display: block;
+    color: #000;
+    text-decoration: none;
+    user-select: none;
 
     p {
         font-weight: bold;
         font-size: 25px;
     }
 }
-
 
 .links {
     display: flex;
@@ -26,50 +28,48 @@
     height: 40px;
 }
 
-
 .left_links {
     display: flex;
     flex-direction: row;
-    gap: 25px; 
+    gap: 25px;
 }
-
 
 .profile_link {
     width: 40px;
     height: 40px;
+    border-radius: 50%;
+
     img {
         width: 100%;
     }
-}
 
+    &_active {
+        background-color: $light-main-color;
+    }
+}
 
 @media (max-width: 768px) {
     .header {
         height: 55px;
     }
 
-
     .logo {
         display: none;
     }
 }
-
 
 @media (max-width: 425px) {
     .header {
         padding: 0 4px;
     }
 
-
     .links {
         height: 34px;
     }
-    
-    
-    .left_links {
-        gap: 10px; 
-    }
 
+    .left_links {
+        gap: 10px;
+    }
 
     .profile_link {
         width: 34px;

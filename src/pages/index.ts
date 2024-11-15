@@ -9,13 +9,12 @@ export { RegisterPage } from './auth/RegisterPage';
 
 // Main
 export { MainPage } from './main/MainPage';
-export { SetPage } from './main/SetPage';
+export { OrganizationsPage } from './main/OrganizationsPage';
 
 // Control
 export { ControlPage } from './control/ControlPage';
 export { EventsPage } from './control/EventsPage';
 export { MembersPage } from './control/MembersPage';
-export { RoomsPage } from './control/RoomsPage';
 
 // Meetings
 export { MeetingsPage } from './meetings/MeetingsPage';
@@ -24,5 +23,4 @@ export { MeetingPage } from './meetings/MeetingPage';
 
 // Profile
 export { ProfilePage } from './profile/ProfilePage';
-export { OrganizationsPage } from './profile/OrganizationsPage';
 export { InvitationsPage } from './profile/InvitationsPage';

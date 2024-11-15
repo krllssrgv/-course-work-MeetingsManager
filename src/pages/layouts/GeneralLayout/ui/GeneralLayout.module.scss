@@ -4,7 +4,6 @@
     position: relative;
 }
 
-
 .page {
     display: flex;
     flex-direction: row;
@@ -13,14 +12,12 @@
     margin-top: 15px;
 }
 
-
 .content {
     background-color: #fff;
     border-radius: 20px;
     padding: 10px;
     flex-grow: 1;
 }
-
 
 @media (max-width: 768px) {
     .page {

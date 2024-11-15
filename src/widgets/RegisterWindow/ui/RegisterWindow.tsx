@@ -1,7 +1,13 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { InputsContainer, AuthError } from '@features';
-import { LongButton, TextInput, API_URL, APP_ROUTES } from '@shared';
+import {
+    LongButton,
+    TextInput,
+    API_URL,
+    APP_ROUTES,
+    InputsContainer,
+    AuthError,
+} from '@shared';
 
 export const RegisterWindow = () => {
     const [email, setEmail] = useState('');
@@ -99,7 +105,7 @@ export const RegisterWindow = () => {
             </InputsContainer>
             <AuthError error={error} />
             <LongButton
-                func={registerHandle}
+                onClick={registerHandle}
                 text="Зарегистрироваться"
                 loading={loading}
             />

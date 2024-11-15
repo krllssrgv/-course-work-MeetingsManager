@@ -1,32 +1,68 @@
+import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchUser } from '../thunks/fetchUser';
+
+type Invitation = {
+    id: number;
+    organization: string;
+};
+
+type Organization = {
+    id: number;
+    name: string;
+    owned: boolean;
+};
 
 export type AuthState = {
     tryToFetch: boolean;
     wasLoaded: boolean;
+    itWasLogout: boolean;
     user: {
         name: string;
         lastname: string;
         fathername: string;
-        owner: boolean;
+        invitations: Record<number, Invitation>;
+        organizations: Record<number, Organization>;
     };
 };
 
 const initialState: AuthState = {
     tryToFetch: true,
     wasLoaded: false,
+    itWasLogout: false,
     user: {
         name: '',
         lastname: '',
         fathername: '',
-        owner: false,
+        invitations: {},
+        organizations: {},
     },
 };
 
 const authSlice = createSlice({
     name: 'auth',
     initialState,
-    reducers: {},
+    reducers: {
+        logoutUser: (state: AuthState) => {
+            Object.assign(state, initialState);
+            state.tryToFetch = false;
+            state.itWasLogout = true;
+        },
+        acceptInv: (
+            state: AuthState,
+            action: PayloadAction<{
+                id: number;
+                org: Organization;
+            }>
+        ) => {
+            delete state.user.invitations[action.payload.id];
+            state.user.organizations[action.payload.org.id] =
+                action.payload.org;
+        },
+        removeInv: (state: AuthState, action: PayloadAction<number>) => {
+            delete state.user.invitations[action.payload];
+        },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchUser.fulfilled, (state: AuthState, action) => {
@@ -35,7 +71,18 @@ const authSlice = createSlice({
                 state.user.name = action.payload.name;
                 state.user.lastname = action.payload.lastname;
                 state.user.fathername = action.payload.fathername;
-                state.user.owner = action.payload.owner;
+
+                state.user.invitations = {};
+                action.payload.invitations.forEach((element: Invitation) => {
+                    state.user.invitations[element.id] = element;
+                });
+
+                state.user.organizations = {};
+                action.payload.organizations.forEach(
+                    (element: Organization) => {
+                        state.user.organizations[element.id] = element;
+                    }
+                );
             })
             .addCase(fetchUser.rejected, (state: AuthState, action) => {
                 if (action.payload === 'auth') {
@@ -46,5 +93,5 @@ const authSlice = createSlice({
     },
 });
 
-// export const { } = authSlice.actions;
+export const { logoutUser, acceptInv, removeInv } = authSlice.actions;
 export const authReducer = authSlice.reducer;

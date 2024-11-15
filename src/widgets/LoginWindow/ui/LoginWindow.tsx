@@ -1,7 +1,13 @@
 import { useState } from 'react';
-import { InputsContainer, AuthError } from '@features';
 import { fetchUser } from '@entities';
-import { LongButton, TextInput, API_URL, useAppDispatch } from '@shared';
+import {
+    LongButton,
+    TextInput,
+    API_URL,
+    useAppDispatch,
+    InputsContainer,
+    AuthError,
+} from '@shared';
 
 export const LoginWindow = () => {
     const [email, setEmail] = useState('');
@@ -63,7 +69,7 @@ export const LoginWindow = () => {
                 />
             </InputsContainer>
             <AuthError error={error} />
-            <LongButton func={loginHandle} text="Войти" loading={loading} />
+            <LongButton onClick={loginHandle} text="Войти" loading={loading} />
         </>
     );
 };

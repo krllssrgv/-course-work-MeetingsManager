@@ -1,12 +1,11 @@
 import { Outlet, Navigate, useLocation } from 'react-router-dom';
 import { Header, LeftMenu } from '@widgets';
-import { selectUser } from '@entities';
+import { selectUserAuth } from '@entities';
 import { useAppSelector, APP_ROUTES } from '@shared';
 import styles from './GeneralLayout.module.scss';
 
-
 export const GeneralLayout = () => {
-    const user = useAppSelector(selectUser);
+    const user = useAppSelector(selectUserAuth);
     const location = useLocation();
 
     if (!user.wasLoaded) {

@@ -27,10 +27,16 @@ export const App = () => {
                         />
                     </Route>
                     <Route path="/" element={<Pages.GeneralLayout />}>
-                        <Route index element={<Navigate to="/auth/login" replace />} />
+                        <Route
+                            index
+                            element={<Navigate to="/auth/login" replace />}
+                        />
                         <Route path="main" element={<Outlet />}>
                             <Route index element={<Pages.MainPage />} />
-                            <Route path="set" element={<Pages.SetPage />} />
+                            <Route
+                                path="organizations"
+                                element={<Pages.OrganizationsPage />}
+                            />
                         </Route>
 
                         <Route path="control" element={<Outlet />}>
@@ -39,7 +45,6 @@ export const App = () => {
                                 path="members"
                                 element={<Pages.MembersPage />}
                             />
-                            <Route path="rooms" element={<Pages.RoomsPage />} />
                             <Route
                                 path="events"
                                 element={<Pages.EventsPage />}
@@ -57,10 +62,6 @@ export const App = () => {
 
                         <Route path="profile" element={<Outlet />}>
                             <Route index element={<Pages.ProfilePage />} />
-                            <Route
-                                path="organizations"
-                                element={<Pages.OrganizationsPage />}
-                            />
                             <Route
                                 path="invitations"
                                 element={<Pages.InvitationsPage />}
