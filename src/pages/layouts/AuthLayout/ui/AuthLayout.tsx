@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Outlet, useLocation, Link, Navigate } from 'react-router-dom';
-import classNames from 'classnames';
-import { selectUser, fetchUser } from '@entities';
+import cn from 'classnames';
+import { selectUserAuth, fetchUser } from '@entities';
 import {
     APP_ROUTES,
     useAppSelector,
@@ -13,7 +13,7 @@ import styles from './AuthLayout.module.scss';
 export const AuthLayout = () => {
     const location = useLocation();
     const fromPage = location.state?.from;
-    const user = useAppSelector(selectUser);
+    const user = useAppSelector(selectUserAuth);
     const dispatch = useAppDispatch();
 
     useEffect(() => {
@@ -23,7 +23,10 @@ export const AuthLayout = () => {
     }, [dispatch, user.wasLoaded]);
 
     if (user.wasLoaded) {
-        return <Navigate to={fromPage || APP_ROUTES.main} replace />;
+        const to = user.itWasLogout
+            ? APP_ROUTES.main
+            : fromPage || APP_ROUTES.main;
+        return <Navigate to={to} replace />;
     } else {
         if (user.tryToFetch) {
             return (
@@ -42,7 +45,7 @@ export const AuthLayout = () => {
                     <div className={styles.switcher}>
                         <Link
                             to={APP_ROUTES.login}
-                            className={classNames(
+                            className={cn(
                                 styles.link,
                                 location.pathname === APP_ROUTES.login
                                     ? styles.link_active
@@ -53,7 +56,7 @@ export const AuthLayout = () => {
                         </Link>
                         <Link
                             to={APP_ROUTES.register}
-                            className={classNames(
+                            className={cn(
                                 styles.link,
                                 location.pathname === APP_ROUTES.register
                                     ? styles.link_active

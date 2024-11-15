@@ -1,1 +1,1 @@
-export { LeftMenu } from './ui/LeftMenu'
+export { LeftMenu } from './ui/LeftMenu';
