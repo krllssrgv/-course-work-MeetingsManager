@@ -12,10 +12,7 @@ export const MenuLink = ({ to, text, active }: Props) => {
     return (
         <Link
             to={to}
-            className={cn(
-                styles.link,
-                active ? styles.link_active : null
-            )}
+            className={cn(styles.link, active ? styles.link_active : null)}
         >
             {text}
         </Link>

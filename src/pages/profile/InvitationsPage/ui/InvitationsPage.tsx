@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Invitations } from '@widgets';
-import { selectUserInvs } from '@entities';
+import { selectUserInvs } from '@features';
 import { useAppSelector } from '@shared';
 import styles from './InvitationPage.module.scss';
 

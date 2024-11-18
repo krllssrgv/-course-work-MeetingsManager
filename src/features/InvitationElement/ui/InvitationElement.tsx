@@ -1,4 +1,4 @@
-import { useInvitations } from '@entities';
+import { useInvitations } from '@features';
 import { AppButton } from '@shared';
 import styles from './InvitationElement.module.scss';
 
@@ -8,8 +8,12 @@ type Props = {
 };
 
 export const InvitationElement = ({ id, name }: Props) => {
-    const { acceptLoading, rejectLoading, handleAcceptInvitation, handleRejectInvitation } = useInvitations();
-    
+    const {
+        acceptLoading,
+        rejectLoading,
+        handleAcceptInvitation,
+        handleRejectInvitation,
+    } = useInvitations();
 
     return (
         <div className={styles.inv}>

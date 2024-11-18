@@ -9,7 +9,7 @@ describe('LongButton', () => {
         const loading = false;
 
         // act
-        render(<LongButton text={text} func={func} loading={loading} />);
+        render(<LongButton text={text} onClick={func} loading={loading} />);
         const button = screen.getByText('Confirm');
         fireEvent.click(button);
 
@@ -24,7 +24,7 @@ describe('LongButton', () => {
         const loading = true;
 
         // act
-        render(<LongButton text={text} func={func} loading={loading} />);
+        render(<LongButton text={text} onClick={func} loading={loading} />);
         const button = screen.getByRole('button');
         const img = screen.getByRole('img');
         fireEvent.click(button);

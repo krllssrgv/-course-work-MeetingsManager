@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Outlet, useLocation, Link, Navigate } from 'react-router-dom';
 import cn from 'classnames';
-import { selectUserAuth, fetchUser } from '@entities';
+import { selectUserAuth, fetchUser } from '@features';
 import {
     APP_ROUTES,
     useAppSelector,

@@ -1,7 +1,7 @@
 // Layouts
 export { GeneralLayout } from './layouts/GeneralLayout';
 export { AuthLayout } from './layouts/AuthLayout';
-export { ControlLayout } from './layouts/ControlLayout';
+export { OrganizationLayout } from './layouts/OrganizationLayout';
 
 // Auth
 export { LoginPage } from './auth/LoginPage';
@@ -9,17 +9,13 @@ export { RegisterPage } from './auth/RegisterPage';
 
 // Main
 export { MainPage } from './main/MainPage';
-export { OrganizationsPage } from './main/OrganizationsPage';
+export { TimetablePage } from './main/TimetablePage';
 
-// Control
-export { ControlPage } from './control/ControlPage';
-export { EventsPage } from './control/EventsPage';
-export { MembersPage } from './control/MembersPage';
-
-// Meetings
-export { MeetingsPage } from './meetings/MeetingsPage';
-export { OwnMeetingsPage } from './meetings/OwnMeetingsPage';
-export { MeetingPage } from './meetings/MeetingPage';
+// Organizations
+export { OrganizationsPage } from './organizations/OrganizationsPage';
+export { MeetingsPage } from './organizations/MeetingsPage';
+export { CreateMeetingPage } from './organizations/CreateMeetingPage';
+export { MembersPage } from './organizations/MembersPage';
 
 // Profile
 export { ProfilePage } from './profile/ProfilePage';

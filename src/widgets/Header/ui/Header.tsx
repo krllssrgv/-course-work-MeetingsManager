@@ -22,14 +22,12 @@ export const Header = () => {
                         active={currentFirstPath === APP_ROUTES.main}
                     />
                     <HeaderLink
-                        to={APP_ROUTES.control}
-                        text="Управление"
-                        active={currentFirstPath === APP_ROUTES.control}
-                    />
-                    <HeaderLink
-                        to={APP_ROUTES.meetings}
-                        text="Встречи"
-                        active={currentFirstPath === APP_ROUTES.meetings}
+                        to={APP_ROUTES.organizations}
+                        text="Организации"
+                        active={
+                            currentFirstPath === APP_ROUTES.organizations ||
+                            currentFirstPath === APP_ROUTES.organization()
+                        }
                     />
                 </div>
 
