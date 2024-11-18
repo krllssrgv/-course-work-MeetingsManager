@@ -1,6 +1,6 @@
 import { Outlet, Navigate, useLocation } from 'react-router-dom';
 import { Header, LeftMenu } from '@widgets';
-import { selectUserAuth } from '@entities';
+import { selectUserAuth } from '@features';
 import { useAppSelector, APP_ROUTES } from '@shared';
 import styles from './GeneralLayout.module.scss';
 

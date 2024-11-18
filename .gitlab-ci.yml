@@ -1,0 +1,29 @@
+image: node:20
+
+stages:
+  - install
+  - lint
+  - test
+
+install:
+  stage: install
+  script: 
+    - npm i
+  artifacts:
+    paths:
+      - node_modules/
+      - package-lock.json
+
+lint:
+  stage: lint
+  script:
+    - npm run lint
+  dependencies:
+    - install
+
+test:
+  stage: test
+  script:
+    - npm run test
+  dependencies:
+    - install

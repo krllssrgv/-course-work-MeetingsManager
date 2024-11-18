@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { selectUserData, logoutUser } from '@entities';
+import { selectUserData, logoutUser } from '@features';
 import { useAppSelector, useAppDispatch, AppButton, API_URL } from '@shared';
 import styles from './ProfilePage.module.scss';
 

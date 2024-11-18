@@ -1,0 +1,33 @@
+.organization {
+    display: block;
+    color: #000;
+    background-color: $light-main-color;
+    width: 100%;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 24px;
+    font-weight: bold;
+
+    :hover {
+        cursor: pointer;
+    }
+}
+
+@media (max-width: 1024px) {
+    .organization {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 768px) {
+    .organization {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .organization {
+        font-size: 18px;
+    }
+}

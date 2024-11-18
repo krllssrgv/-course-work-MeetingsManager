@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { fetchUser } from '@entities';
+import { fetchUser } from '@features';
 import {
     LongButton,
     TextInput,

@@ -10,6 +10,7 @@ import { store } from './store';
 import * as Pages from '@pages';
 import './App.scss';
 
+
 export const App = () => {
     return (
         <Provider store={store}>
@@ -34,30 +35,32 @@ export const App = () => {
                         <Route path="main" element={<Outlet />}>
                             <Route index element={<Pages.MainPage />} />
                             <Route
-                                path="organizations"
-                                element={<Pages.OrganizationsPage />}
+                                path="timetable"
+                                element={<Pages.TimetablePage />}
                             />
                         </Route>
 
-                        <Route path="control" element={<Outlet />}>
-                            <Route index element={<Pages.ControlPage />} />
+                        <Route
+                            path="organizations"
+                            element={<Pages.OrganizationsPage />}
+                        ></Route>
+
+                        <Route
+                            path="organization/:id"
+                            element={<Pages.OrganizationLayout />}
+                        >
+                            <Route
+                                index
+                                element={<Pages.MeetingsPage />}
+                            />
+                            <Route
+                                path="create"
+                                element={<Pages.CreateMeetingPage />}
+                            />
                             <Route
                                 path="members"
                                 element={<Pages.MembersPage />}
                             />
-                            <Route
-                                path="events"
-                                element={<Pages.EventsPage />}
-                            />
-                        </Route>
-
-                        <Route path="meetings" element={<Outlet />}>
-                            <Route index element={<Pages.MeetingsPage />} />
-                            <Route
-                                path="myown"
-                                element={<Pages.OwnMeetingsPage />}
-                            />
-                            <Route path=":id" element={<Pages.MeetingPage />} />
                         </Route>
 
                         <Route path="profile" element={<Outlet />}>

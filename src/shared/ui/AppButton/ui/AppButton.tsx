@@ -19,10 +19,7 @@ export const AppButton = ({
 }: Props) => {
     return (
         <button
-            className={cn(
-                styles.button,
-                negative ? styles.negative : null
-            )}
+            className={cn(styles.button, negative ? styles.negative : null)}
             onClick={!block && !loading ? onClick : () => {}}
         >
             {loading ? (

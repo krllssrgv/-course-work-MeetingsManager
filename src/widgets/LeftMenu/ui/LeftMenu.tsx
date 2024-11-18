@@ -1,4 +1,5 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
+import { useOwner } from '@features';
 import { APP_ROUTES, MenuLink } from '@shared';
 import styles from './LeftMenu.module.scss';
 
@@ -6,6 +7,9 @@ export const LeftMenu = () => {
     const location = useLocation();
     const currentPath = location.pathname;
     const currentFirstPath = location.pathname.split('/').slice(0, 2).join('/');
+    const { id } = useParams();
+    const pathID = Number(id);
+    const checkOwner = useOwner();
 
     const setLinks = () => {
         switch (currentFirstPath) {
@@ -18,6 +22,17 @@ export const LeftMenu = () => {
                             active={currentPath === APP_ROUTES.main}
                         />
                         <MenuLink
+                            to={APP_ROUTES.timetable}
+                            text="Расписание"
+                            active={currentPath === APP_ROUTES.timetable}
+                        />
+                    </>
+                );
+
+            case APP_ROUTES.organizations:
+                return (
+                    <>
+                        <MenuLink
                             to={APP_ROUTES.organizations}
                             text="Организации"
                             active={currentPath === APP_ROUTES.organizations}
@@ -25,40 +40,32 @@ export const LeftMenu = () => {
                     </>
                 );
 
-            case APP_ROUTES.control:
+            case APP_ROUTES.organization():
                 return (
                     <>
                         <MenuLink
-                            to={APP_ROUTES.control}
-                            text="Организация"
-                            active={currentPath === APP_ROUTES.control}
-                        />
-                        <MenuLink
-                            to={APP_ROUTES.members}
-                            text="Участники"
-                            active={currentPath === APP_ROUTES.members}
-                        />
-                        <MenuLink
-                            to={APP_ROUTES.events}
+                            to={APP_ROUTES.organization(pathID)}
                             text="Встречи"
-                            active={currentPath === APP_ROUTES.events}
-                        />
-                    </>
-                );
-
-            case APP_ROUTES.meetings:
-                return (
-                    <>
-                        <MenuLink
-                            to={APP_ROUTES.meetings}
-                            text="Встречи"
-                            active={currentPath === APP_ROUTES.meetings}
+                            active={
+                                currentPath === APP_ROUTES.organization(pathID)
+                            }
                         />
                         <MenuLink
-                            to={APP_ROUTES.myOwn}
-                            text="Мои встречи"
-                            active={currentPath === APP_ROUTES.myOwn}
+                            to={APP_ROUTES.create(pathID)}
+                            text="Создать встречу"
+                            active={currentPath === APP_ROUTES.create(pathID)}
                         />
+                        {checkOwner(pathID) ? (
+                            <MenuLink
+                                to={APP_ROUTES.members(pathID)}
+                                text="Участники"
+                                active={
+                                    currentPath === APP_ROUTES.members(pathID)
+                                }
+                            />
+                        ) : (
+                            <></>
+                        )}
                     </>
                 );
 

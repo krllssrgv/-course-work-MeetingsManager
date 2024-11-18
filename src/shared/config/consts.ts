@@ -6,15 +6,13 @@ export const APP_ROUTES = {
     register: '/auth/register',
 
     main: '/main',
-    organizations: '/main/organizations',
+    timetable: '/main/timetable',
 
-    control: '/control',
-    members: '/control/members',
-    events: '/control/events',
-
-    meetings: '/meetings',
-    myOwn: '/meetings/myown',
-    meeting: '/meetings/meeting',
+    organizations: '/organizations',
+    organization: (id?: number) =>
+        id !== undefined ? `/organization/${id}` : '/organization',
+    create: (id: number) => `/organization/${id}/create`,
+    members: (id: number) => `/organization/${id}/members`,
 
     profile: '/profile',
     invitations: '/profile/invitations',
