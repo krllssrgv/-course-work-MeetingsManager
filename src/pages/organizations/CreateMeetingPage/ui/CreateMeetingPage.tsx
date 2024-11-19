@@ -3,7 +3,7 @@ import { Creator } from '@widgets';
 
 export const CreateMeetingPage = () => {
     useEffect(() => {
-        document.title = 'Создание';
+        document.title = 'Создание встречи';
     }, []);
 
     return <Creator />;

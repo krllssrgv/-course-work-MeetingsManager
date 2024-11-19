@@ -9,10 +9,10 @@ export { RegisterPage } from './auth/RegisterPage';
 
 // Main
 export { MainPage } from './main/MainPage';
-export { TimetablePage } from './main/TimetablePage';
 
 // Organizations
 export { OrganizationsPage } from './organizations/OrganizationsPage';
+export { CreateOrganizationPage } from './organizations/CreateOrganizationPage';
 export { MeetingsPage } from './organizations/MeetingsPage';
 export { CreateMeetingPage } from './organizations/CreateMeetingPage';
 export { MembersPage } from './organizations/MembersPage';

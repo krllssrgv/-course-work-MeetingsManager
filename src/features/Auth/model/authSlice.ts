@@ -15,7 +15,7 @@ type Meeting = {
     place: string;
     description: string;
     tim: string;
-}
+};
 
 type Organization = {
     id: number;
@@ -47,7 +47,7 @@ const initialState: AuthState = {
         fathername: '',
         invitations: {},
         organizations: {},
-        meetings: {}
+        meetings: {},
     },
 };
 
@@ -59,6 +59,16 @@ const authSlice = createSlice({
             Object.assign(state, initialState);
             state.tryToFetch = false;
             state.itWasLogout = true;
+        },
+        foundOrganization: (
+            state: AuthState,
+            action: PayloadAction<Organization>
+        ) => {
+            state.user.organizations[action.payload.id] = {
+                id: action.payload.id,
+                name: action.payload.name,
+                owned: action.payload.owned,
+            };
         },
         acceptInv: (
             state: AuthState,
@@ -105,5 +115,6 @@ const authSlice = createSlice({
     },
 });
 
-export const { logoutUser, acceptInv, removeInv } = authSlice.actions;
+export const { logoutUser, acceptInv, removeInv, foundOrganization } =
+    authSlice.actions;
 export const authReducer = authSlice.reducer;

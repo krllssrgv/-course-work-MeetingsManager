@@ -13,5 +13,8 @@ export {
     useInvitations,
     useOwner,
     useOrganizations,
+    foundOrganization,
 } from './Auth';
 export type { AuthState } from './Auth';
+
+export { UserSelector } from './UserSelector';

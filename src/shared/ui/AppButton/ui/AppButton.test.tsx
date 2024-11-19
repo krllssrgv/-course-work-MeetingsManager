@@ -24,7 +24,14 @@ describe('LongButton', () => {
         const loading = true;
 
         // act
-        render(<AppButton text={text} onClick={func} loading={loading} block={true} />);
+        render(
+            <AppButton
+                text={text}
+                onClick={func}
+                loading={loading}
+                block={true}
+            />
+        );
         const button = screen.getByRole('button');
         const img = screen.getByRole('img');
         fireEvent.click(button);

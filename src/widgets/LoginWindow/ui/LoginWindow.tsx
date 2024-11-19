@@ -36,9 +36,10 @@ export const LoginWindow = () => {
 
                 if (response.ok) {
                     dispatch(fetchUser());
-                } else {
-                    const json = await response.json();
                     setLoading(false);
+                } else {
+                    setLoading(false);
+                    const json = await response.json();
                     setError(json.error);
                 }
             } catch {

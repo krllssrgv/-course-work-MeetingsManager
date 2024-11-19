@@ -4,6 +4,7 @@ export {
     logoutUser,
     acceptInv,
     removeInv,
+    foundOrganization,
 } from './model/authSlice';
 export type { AuthState } from './model/authSlice';
 export {
