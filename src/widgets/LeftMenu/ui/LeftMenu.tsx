@@ -14,20 +14,7 @@ export const LeftMenu = () => {
     const setLinks = () => {
         switch (currentFirstPath) {
             case APP_ROUTES.main:
-                return (
-                    <>
-                        <MenuLink
-                            to={APP_ROUTES.main}
-                            text="Главная"
-                            active={currentPath === APP_ROUTES.main}
-                        />
-                        <MenuLink
-                            to={APP_ROUTES.timetable}
-                            text="Расписание"
-                            active={currentPath === APP_ROUTES.timetable}
-                        />
-                    </>
-                );
+                return <></>;
 
             case APP_ROUTES.organizations:
                 return (
@@ -36,6 +23,11 @@ export const LeftMenu = () => {
                             to={APP_ROUTES.organizations}
                             text="Организации"
                             active={currentPath === APP_ROUTES.organizations}
+                        />
+                        <MenuLink
+                            to={APP_ROUTES.found}
+                            text="Создать орагинзацию"
+                            active={currentPath === APP_ROUTES.found}
                         />
                     </>
                 );
@@ -87,5 +79,9 @@ export const LeftMenu = () => {
         }
     };
 
-    return <aside className={styles.container}>{setLinks()}</aside>;
+    if (currentFirstPath === APP_ROUTES.main) {
+        return <></>;
+    } else {
+        return <aside className={styles.container}>{setLinks()}</aside>;
+    }
 };

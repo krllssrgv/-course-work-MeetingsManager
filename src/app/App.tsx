@@ -10,7 +10,6 @@ import { store } from './store';
 import * as Pages from '@pages';
 import './App.scss';
 
-
 export const App = () => {
     return (
         <Provider store={store}>
@@ -34,25 +33,24 @@ export const App = () => {
                         />
                         <Route path="main" element={<Outlet />}>
                             <Route index element={<Pages.MainPage />} />
-                            <Route
-                                path="timetable"
-                                element={<Pages.TimetablePage />}
-                            />
                         </Route>
 
-                        <Route
-                            path="organizations"
-                            element={<Pages.OrganizationsPage />}
-                        ></Route>
+                        <Route path="organizations" element={<Outlet />}>
+                            <Route
+                                index
+                                element={<Pages.OrganizationsPage />}
+                            />
+                            <Route
+                                path="found"
+                                element={<Pages.CreateOrganizationPage />}
+                            />
+                        </Route>
 
                         <Route
                             path="organization/:id"
                             element={<Pages.OrganizationLayout />}
                         >
-                            <Route
-                                index
-                                element={<Pages.MeetingsPage />}
-                            />
+                            <Route index element={<Pages.MeetingsPage />} />
                             <Route
                                 path="create"
                                 element={<Pages.CreateMeetingPage />}

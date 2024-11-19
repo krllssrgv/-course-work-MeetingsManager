@@ -28,6 +28,10 @@
     background-color: #f00;
 }
 
+.block {
+    background-color: $light-main-color;
+}
+
 @media (max-width: 768px) {
     .button {
         width: 100%;
