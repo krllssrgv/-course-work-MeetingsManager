@@ -6,3 +6,4 @@ export { Invitations } from './Invitations';
 export { OrganizationsList } from './OrganizationsList';
 export { Creator } from './Creator';
 export { Founder } from './Founder';
+export { MeetingsList } from './MeetingsList';

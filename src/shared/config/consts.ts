@@ -5,10 +5,8 @@ export const APP_ROUTES = {
     login: '/auth/login',
     register: '/auth/register',
 
-    main: '/main',
-
     organizations: '/organizations',
-    found: '/organizations/found',
+    found: '/found',
 
     organization: (id?: number) =>
         id !== undefined ? `/organization/${id}` : '/organization',

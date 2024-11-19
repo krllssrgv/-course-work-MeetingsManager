@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { API_URL } from '@shared';
+import { useParams, useNavigate } from 'react-router-dom';
+import { createMeeting } from '@features';
+import { API_URL, APP_ROUTES, checkSpace, useAppDispatch } from '@shared';
 
 export const useCreate = () => {
+    const dispatch = useAppDispatch();
+    const navigate = useNavigate();
     const { id } = useParams();
     const orgID = id === undefined ? id : Number(id);
 
@@ -17,15 +20,17 @@ export const useCreate = () => {
     const [comment, setComment] = useState('');
 
     useEffect(() => {
-        setBlockedButton(
-            !(
-                title.length &&
-                place.length &&
-                description.length &&
-                time.length &&
-                date.length
-            )
-        );
+        if (
+            checkSpace(title) &&
+            checkSpace(place) &&
+            checkSpace(description) &&
+            checkSpace(time) &&
+            checkSpace(date)
+        ) {
+            setBlockedButton(false);
+        } else {
+            setBlockedButton(true);
+        }
     }, [date, description, place, time, title]);
 
     useEffect(() => {
@@ -79,12 +84,9 @@ export const useCreate = () => {
 
             setLoading(false);
             if (response.ok) {
-                setTitle('');
-                setPlace('');
-                setDescription('');
-                setTime('');
-                setDate('');
-                setComment('Успешно!');
+                const json = await response.json();
+                dispatch(createMeeting(json));
+                navigate(APP_ROUTES.organization(orgID));
             }
         } catch {
             setLoading(false);

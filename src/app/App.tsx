@@ -31,20 +31,17 @@ export const App = () => {
                             index
                             element={<Navigate to="/auth/login" replace />}
                         />
-                        <Route path="main" element={<Outlet />}>
-                            <Route index element={<Pages.MainPage />} />
-                        </Route>
 
-                        <Route path="organizations" element={<Outlet />}>
-                            <Route
-                                index
-                                element={<Pages.OrganizationsPage />}
-                            />
-                            <Route
-                                path="found"
-                                element={<Pages.CreateOrganizationPage />}
-                            />
-                        </Route>
+                        <Route
+                            path="organizations"
+                            index
+                            element={<Pages.OrganizationsPage />}
+                        />
+
+                        <Route
+                            path="found"
+                            element={<Pages.CreateOrganizationPage />}
+                        />
 
                         <Route
                             path="organization/:id"

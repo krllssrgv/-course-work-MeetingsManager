@@ -30,6 +30,10 @@
 
 .block {
     background-color: $light-main-color;
+
+    &:hover {
+        cursor: default;
+    }
 }
 
 @media (max-width: 768px) {
