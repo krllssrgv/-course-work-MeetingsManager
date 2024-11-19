@@ -2,12 +2,7 @@ import { useEffect } from 'react';
 import { Outlet, useLocation, Link, Navigate } from 'react-router-dom';
 import cn from 'classnames';
 import { selectUserAuth, fetchUser } from '@features';
-import {
-    APP_ROUTES,
-    useAppSelector,
-    useAppDispatch,
-    orangeLoadingImg,
-} from '@shared';
+import { APP_ROUTES, useAppSelector, useAppDispatch, Waiting } from '@shared';
 import styles from './AuthLayout.module.scss';
 
 export const AuthLayout = () => {
@@ -24,21 +19,12 @@ export const AuthLayout = () => {
 
     if (user.wasLoaded) {
         const to = user.itWasLogout
-            ? APP_ROUTES.main
-            : fromPage || APP_ROUTES.main;
+            ? APP_ROUTES.organizations
+            : fromPage || APP_ROUTES.organizations;
         return <Navigate to={to} replace />;
     } else {
         if (user.tryToFetch) {
-            return (
-                <div className={styles.waiting}>
-                    <div className={styles.waiting_text}>Загрузка данных</div>
-                    <img
-                        className={styles.waiting_image}
-                        src={orangeLoadingImg}
-                        alt="waiting spinner"
-                    />
-                </div>
-            );
+            return <Waiting />;
         } else {
             return (
                 <section className={styles.auth_window}>

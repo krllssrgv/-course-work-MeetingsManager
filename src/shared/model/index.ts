@@ -1,0 +1,1 @@
+export { checkSpace } from './checkSpace';

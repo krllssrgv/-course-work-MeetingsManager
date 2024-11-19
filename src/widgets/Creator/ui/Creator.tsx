@@ -46,6 +46,7 @@ export const Creator = () => {
                 type="date"
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
+                min={(() => new Date().toISOString().split('T')[0])()}
             />
             <input
                 className={styles.datetime}

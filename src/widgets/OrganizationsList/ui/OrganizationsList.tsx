@@ -1,5 +1,5 @@
 import { useOrganizations } from '@features';
-import { OrganizationLink } from '@shared';
+import { OrganizationLink } from '@entities';
 import styles from './OrganizationsList.module.scss';
 
 export const OrganizationsList = () => {

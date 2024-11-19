@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { APP_ROUTES } from '../../../config/consts';
+import { APP_ROUTES } from '@shared';
 import styles from './OrganizationLink.module.scss';
 
 type Props = {

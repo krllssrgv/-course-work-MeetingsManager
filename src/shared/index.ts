@@ -12,7 +12,10 @@ export { InputsContainer } from './ui/InputsContainer';
 export { AuthError } from './ui/AuthError';
 export { MenuLink } from './ui/MenuLink';
 export { AppButton } from './ui/AppButton';
-export { OrganizationLink } from './ui/OrganizationLink';
+export { Waiting } from './ui/Waiting';
+
+// Model
+export { checkSpace } from './model';
 
 // Img
 export { default as orangeLoadingImg } from './assets/orange_loading.png';

@@ -1,9 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { authReducer } from '@features';
+import { authReducer, organizationReducer } from '@features';
 
 export const store = configureStore({
     reducer: {
         auth: authReducer,
+        organization: organizationReducer,
     },
 });
 

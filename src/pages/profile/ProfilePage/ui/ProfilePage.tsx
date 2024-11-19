@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { selectUserData, logoutUser } from '@features';
+import { selectUserData, logoutUser, resetState } from '@features';
 import { useAppSelector, useAppDispatch, AppButton, API_URL } from '@shared';
 import styles from './ProfilePage.module.scss';
 
@@ -24,6 +24,7 @@ export const ProfilePage = () => {
 
                 if (response.ok) {
                     dispatch(logoutUser());
+                    dispatch(resetState());
                 }
             } catch {
                 setLoading(false);

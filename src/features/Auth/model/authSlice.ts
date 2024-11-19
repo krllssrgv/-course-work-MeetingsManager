@@ -7,16 +7,6 @@ type Invitation = {
     organization: string;
 };
 
-type Meeting = {
-    id: number;
-    organizer: string;
-    organization_id: number;
-    title: string;
-    place: string;
-    description: string;
-    tim: string;
-};
-
 type Organization = {
     id: number;
     name: string;
@@ -33,7 +23,6 @@ export type AuthState = {
         fathername: string;
         invitations: Record<number, Invitation>;
         organizations: Record<number, Organization>;
-        meetings: Record<number, Meeting>;
     };
 };
 
@@ -47,7 +36,6 @@ const initialState: AuthState = {
         fathername: '',
         invitations: {},
         organizations: {},
-        meetings: {},
     },
 };
 

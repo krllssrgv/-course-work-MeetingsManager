@@ -7,9 +7,6 @@ export { OrganizationLayout } from './layouts/OrganizationLayout';
 export { LoginPage } from './auth/LoginPage';
 export { RegisterPage } from './auth/RegisterPage';
 
-// Main
-export { MainPage } from './main/MainPage';
-
 // Organizations
 export { OrganizationsPage } from './organizations/OrganizationsPage';
 export { CreateOrganizationPage } from './organizations/CreateOrganizationPage';

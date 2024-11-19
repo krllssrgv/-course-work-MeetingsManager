@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { foundOrganization } from '@features';
-import { API_URL, useAppDispatch } from '@shared';
+import { API_URL, useAppDispatch, APP_ROUTES, checkSpace } from '@shared';
 
 export const useFound = () => {
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
+
     const [name, setName] = useState('');
 
     const [loading, setLoading] = useState(false);
@@ -11,7 +14,11 @@ export const useFound = () => {
     const [comment, setComment] = useState('');
 
     useEffect(() => {
-        setBlocked(!name);
+        if (name && checkSpace(name)) {
+            setBlocked(false);
+        } else {
+            setBlocked(true);
+        }
     }, [name]);
 
     useEffect(() => {
@@ -42,6 +49,7 @@ export const useFound = () => {
             if (response.ok) {
                 const json = await response.json();
                 setLoading(false);
+                setName('');
                 dispatch(
                     foundOrganization({
                         id: json.id,
@@ -49,7 +57,7 @@ export const useFound = () => {
                         owned: true,
                     })
                 );
-                setComment('Успешно');
+                navigate(APP_ROUTES.organizations);
             } else {
                 setLoading(false);
                 setComment('Ошибка');

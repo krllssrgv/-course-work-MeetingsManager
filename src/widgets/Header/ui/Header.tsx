@@ -9,7 +9,7 @@ export const Header = () => {
 
     return (
         <header className={styles.header}>
-            <Link to={APP_ROUTES.main} className={styles.logo}>
+            <Link to={APP_ROUTES.organizations} className={styles.logo}>
                 <p>Meetings</p>
                 <p>Manager</p>
             </Link>
@@ -17,17 +17,17 @@ export const Header = () => {
             <nav className={styles.links}>
                 <div className={styles.left_links}>
                     <HeaderLink
-                        to={APP_ROUTES.main}
-                        text="Главная"
-                        active={currentFirstPath === APP_ROUTES.main}
-                    />
-                    <HeaderLink
                         to={APP_ROUTES.organizations}
                         text="Организации"
                         active={
                             currentFirstPath === APP_ROUTES.organizations ||
                             currentFirstPath === APP_ROUTES.organization()
                         }
+                    />
+                    <HeaderLink
+                        to={APP_ROUTES.found}
+                        text="Создание"
+                        active={currentFirstPath === APP_ROUTES.found}
                     />
                 </div>
 

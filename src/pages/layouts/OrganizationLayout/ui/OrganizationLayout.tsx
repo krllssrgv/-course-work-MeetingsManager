@@ -1,14 +1,21 @@
-import { Outlet, Navigate, useParams } from 'react-router-dom';
-import { selectUserOrgs } from '@features';
-import { useAppSelector, APP_ROUTES } from '@shared';
+import { useEffect } from 'react';
+import { Outlet, Navigate } from 'react-router-dom';
+import { APP_ROUTES, Waiting } from '@shared';
+import { useOrganizationData } from '../model/useOrganizationData';
 
 export const OrganizationLayout = () => {
-    const organizations = useAppSelector(selectUserOrgs);
-    const { id } = useParams();
-    const organizationID = Number(id);
+    const { doesExist, getOrganization, loading } = useOrganizationData();
 
-    if (organizationID && organizations[organizationID]) {
-        return <Outlet />;
+    useEffect(() => {
+        getOrganization();
+    }, [getOrganization]);
+
+    if (doesExist) {
+        if (loading) {
+            return <Waiting />;
+        } else {
+            return <Outlet />;
+        }
     } else {
         return <Navigate to={APP_ROUTES.organizations} replace />;
     }

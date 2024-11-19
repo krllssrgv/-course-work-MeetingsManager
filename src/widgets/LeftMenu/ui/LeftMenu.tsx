@@ -13,24 +13,8 @@ export const LeftMenu = () => {
 
     const setLinks = () => {
         switch (currentFirstPath) {
-            case APP_ROUTES.main:
-                return <></>;
-
             case APP_ROUTES.organizations:
-                return (
-                    <>
-                        <MenuLink
-                            to={APP_ROUTES.organizations}
-                            text="Организации"
-                            active={currentPath === APP_ROUTES.organizations}
-                        />
-                        <MenuLink
-                            to={APP_ROUTES.found}
-                            text="Создать орагинзацию"
-                            active={currentPath === APP_ROUTES.found}
-                        />
-                    </>
-                );
+                return <></>;
 
             case APP_ROUTES.organization():
                 return (
@@ -79,7 +63,10 @@ export const LeftMenu = () => {
         }
     };
 
-    if (currentFirstPath === APP_ROUTES.main) {
+    if (
+        currentFirstPath === APP_ROUTES.organizations ||
+        currentFirstPath === APP_ROUTES.found
+    ) {
         return <></>;
     } else {
         return <aside className={styles.container}>{setLinks()}</aside>;
