@@ -1,61 +1,25 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import {
-    LongButton,
-    TextInput,
-    API_URL,
-    APP_ROUTES,
-    InputsContainer,
-    AuthError,
-} from '@shared';
+import { LongButton, TextInput, InputsContainer, AuthError } from '@shared';
+import { useRegister } from '../model/useRegister';
 
 export const RegisterWindow = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [repeatedPassword, setRepeatedPassword] = useState('');
-    const [name, setName] = useState('');
-    const [lastname, setLastname] = useState('');
-    const [fathername, setFathername] = useState('');
-    const [error, setError] = useState('');
-    const [loading, setLoading] = useState(false);
-    const navigate = useNavigate();
-
-    const registerHandle = () => {
-        setError('');
-        setLoading(true);
-
-        const fetchRegister = async () => {
-            try {
-                const response = await fetch(`${API_URL}auth/register`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        email: email,
-                        password: password,
-                        repeated_password: repeatedPassword,
-                        name: name,
-                        lastname: lastname,
-                        fathername: fathername,
-                    }),
-                });
-
-                setLoading(false);
-                if (response.ok) {
-                    navigate(APP_ROUTES.login);
-                } else {
-                    const json = await response.json();
-                    setError(json.error);
-                }
-            } catch {
-                setError('Ошибка подключения');
-                setLoading(false);
-            }
-        };
-
-        fetchRegister();
-    };
+    const {
+        registerHandle,
+        email,
+        setEmail,
+        password,
+        setPassword,
+        repeatedPassword,
+        setRepeatedPassword,
+        name,
+        setName,
+        lastname,
+        setLastname,
+        fathername,
+        setFathername,
+        error,
+        loading,
+        blocked,
+    } = useRegister();
 
     return (
         <>
@@ -108,6 +72,7 @@ export const RegisterWindow = () => {
                 onClick={registerHandle}
                 text="Зарегистрироваться"
                 loading={loading}
+                blocked={blocked}
             />
         </>
     );

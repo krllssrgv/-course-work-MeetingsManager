@@ -14,5 +14,15 @@ export const OrganizationsList = () => {
         )
     );
 
-    return <div className={styles.container}>{organizationsList}</div>;
+    return (
+        <div className={styles.container}>
+            {organizationsList.length ? (
+                organizationsList
+            ) : (
+                <div className={styles.comment}>
+                    Вы пока не состоите ни в одной организации
+                </div>
+            )}
+        </div>
+    );
 };

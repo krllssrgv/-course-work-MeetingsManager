@@ -12,6 +12,7 @@ export const selectUserAuth = createSelector(
 export const selectUserData = createSelector(
     [(state: RootState) => state.auth.user],
     (user) => ({
+        id: user.id,
         name: user.name,
         lastname: user.lastname,
         fathername: user.fathername,

@@ -23,6 +23,14 @@
     border-radius: 50%;
 }
 
+.blocked {
+    background-color: $light-main-color;
+
+    &:hover {
+        cursor: default;
+    }
+}
+
 @keyframes rotate {
     0% {
         transform: rotate(0deg);

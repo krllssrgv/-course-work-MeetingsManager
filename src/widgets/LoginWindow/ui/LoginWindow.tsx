@@ -1,55 +1,17 @@
-import { useState } from 'react';
-import { fetchUser } from '@features';
-import {
-    LongButton,
-    TextInput,
-    API_URL,
-    useAppDispatch,
-    InputsContainer,
-    AuthError,
-} from '@shared';
+import { LongButton, TextInput, InputsContainer, AuthError } from '@shared';
+import { useLogin } from '../model/useLogin';
 
 export const LoginWindow = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
-    const [loading, setLoading] = useState(false);
-    const dispatch = useAppDispatch();
-
-    const loginHandle = () => {
-        setError('');
-        setLoading(true);
-
-        const fetchLogin = async () => {
-            try {
-                const response = await fetch(`${API_URL}auth/login`, {
-                    method: 'POST',
-                    credentials: 'include',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        email: email,
-                        password: password,
-                    }),
-                });
-
-                if (response.ok) {
-                    dispatch(fetchUser());
-                    setLoading(false);
-                } else {
-                    setLoading(false);
-                    const json = await response.json();
-                    setError(json.error);
-                }
-            } catch {
-                setError('Ошибка подключения');
-                setLoading(false);
-            }
-        };
-
-        fetchLogin();
-    };
+    const {
+        handleLogin,
+        email,
+        setEmail,
+        password,
+        setPassword,
+        loading,
+        error,
+        blocked,
+    } = useLogin();
 
     return (
         <>
@@ -70,7 +32,12 @@ export const LoginWindow = () => {
                 />
             </InputsContainer>
             <AuthError error={error} />
-            <LongButton onClick={loginHandle} text="Войти" loading={loading} />
+            <LongButton
+                onClick={handleLogin}
+                text="Войти"
+                loading={loading}
+                blocked={blocked}
+            />
         </>
     );
 };

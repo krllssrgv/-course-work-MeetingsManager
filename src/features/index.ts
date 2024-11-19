@@ -27,4 +27,7 @@ export {
     selectOrganizationLoading,
     selectOrganizationMeetings,
     selectOrganizationData,
+    selectOrganizationMembers,
+    removeMember,
+    removeMeetings,
 } from './Organization';

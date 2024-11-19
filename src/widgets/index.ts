@@ -7,3 +7,5 @@ export { OrganizationsList } from './OrganizationsList';
 export { Creator } from './Creator';
 export { Founder } from './Founder';
 export { MeetingsList } from './MeetingsList';
+export { InvitationsMaker } from './InvitationsMaker';
+export { Members } from './Members';
