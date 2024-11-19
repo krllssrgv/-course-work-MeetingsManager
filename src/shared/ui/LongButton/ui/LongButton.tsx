@@ -6,13 +6,14 @@ type Props = {
     text: string;
     onClick: () => void;
     loading: boolean;
+    blocked: boolean;
 };
 
-export const LongButton = ({ onClick, text, loading }: Props) => {
+export const LongButton = ({ onClick, text, loading, blocked }: Props) => {
     return (
         <button
-            className={cn(styles.button)}
-            onClick={loading ? () => {} : onClick}
+            className={cn(styles.button, blocked ? styles.blocked : null)}
+            onClick={loading && !blocked ? () => {} : onClick}
         >
             {loading ? (
                 <img

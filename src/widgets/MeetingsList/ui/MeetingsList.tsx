@@ -11,6 +11,7 @@ export const MeetingsList = () => {
             <Meeting
                 key={meeting.id}
                 id={meeting.id}
+                organizer={meeting.organizerName}
                 title={meeting.title}
                 place={meeting.place}
                 description={meeting.description}

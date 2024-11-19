@@ -32,8 +32,8 @@ export type OrganizationState = {
     id: number | null;
     name: string;
     owner: number | null;
-    members: Member[];
-    meetings: Meeting[];
+    members: Record<number, Member>;
+    meetings: Record<number, Meeting>;
 };
 
 const initialState: OrganizationState = {
@@ -42,8 +42,8 @@ const initialState: OrganizationState = {
     id: null,
     name: '',
     owner: null,
-    members: [],
-    meetings: [],
+    members: {},
+    meetings: {},
 };
 
 const organizationSlice = createSlice({
@@ -57,7 +57,25 @@ const organizationSlice = createSlice({
             state: OrganizationState,
             action: PayloadAction<Meeting>
         ) => {
-            state.meetings.push(action.payload);
+            state.meetings[action.payload.id] = action.payload;
+        },
+        removeMember: (
+            state: OrganizationState,
+            action: PayloadAction<number>
+        ) => {
+            if (state.members[action.payload]) {
+                delete state.members[action.payload];
+            }
+        },
+        removeMeetings: (
+            state: OrganizationState,
+            action: PayloadAction<number[]>
+        ) => {
+            action.payload.forEach((meetingID) => {
+                if (state.meetings[meetingID]) {
+                    delete state.meetings[meetingID];
+                }
+            });
         },
     },
     extraReducers: (builder) => {
@@ -75,8 +93,12 @@ const organizationSlice = createSlice({
                     state.id = action.payload.id;
                     state.name = action.payload.name;
                     state.owner = action.payload.owner;
-                    state.members = action.payload.members;
-                    state.meetings = action.payload.meetings;
+                    action.payload.members.forEach((member) => {
+                        state.members[member.id] = member;
+                    });
+                    action.payload.meetings.forEach((meeting) => {
+                        state.meetings[meeting.id] = meeting;
+                    });
                 }
             )
             .addCase(fetchOrganization.rejected, (state: OrganizationState) => {
@@ -87,5 +109,6 @@ const organizationSlice = createSlice({
     },
 });
 
-export const { resetState, createMeeting } = organizationSlice.actions;
+export const { resetState, createMeeting, removeMember, removeMeetings } =
+    organizationSlice.actions;
 export const organizationReducer = organizationSlice.reducer;

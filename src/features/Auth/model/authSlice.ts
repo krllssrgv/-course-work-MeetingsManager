@@ -18,6 +18,7 @@ export type AuthState = {
     wasLoaded: boolean;
     itWasLogout: boolean;
     user: {
+        id: number | null;
         name: string;
         lastname: string;
         fathername: string;
@@ -31,6 +32,7 @@ const initialState: AuthState = {
     wasLoaded: false,
     itWasLogout: false,
     user: {
+        id: null,
         name: '',
         lastname: '',
         fathername: '',
@@ -78,6 +80,7 @@ const authSlice = createSlice({
             .addCase(fetchUser.fulfilled, (state: AuthState, action) => {
                 state.wasLoaded = true;
                 state.tryToFetch = false;
+                state.user.id = action.payload.id;
                 state.user.name = action.payload.name;
                 state.user.lastname = action.payload.lastname;
                 state.user.fathername = action.payload.fathername;

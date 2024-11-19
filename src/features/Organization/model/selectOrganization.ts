@@ -18,3 +18,8 @@ export const selectOrganizationMeetings = createSelector(
     [(state: RootState) => state.organization],
     (organization) => organization.meetings
 );
+
+export const selectOrganizationMembers = createSelector(
+    [(state: RootState) => state.organization],
+    (organization) => organization.members
+);
