@@ -2,6 +2,7 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchUser } from './fetchUser';
 
+
 type Invitation = {
   id: number;
   organization: string;
@@ -16,7 +17,7 @@ type Organization = {
 export type AuthState = {
   tryToFetch: boolean;
   wasLoaded: boolean;
-  itWasLogout: boolean;
+  token: string;
   user: {
     id: number | null;
     name: string;
@@ -28,9 +29,9 @@ export type AuthState = {
 };
 
 const initialState: AuthState = {
-  tryToFetch: true,
+  tryToFetch: false,
   wasLoaded: false,
-  itWasLogout: false,
+  token: '',
   user: {
     id: null,
     name: '',
@@ -45,10 +46,11 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
+    setToken: (state: AuthState, action: PayloadAction<string>) => {
+      state.token = action.payload;
+    },
     logoutUser: (state: AuthState) => {
       Object.assign(state, initialState);
-      state.tryToFetch = false;
-      state.itWasLogout = true;
     },
     foundOrganization: (
       state: AuthState,
@@ -76,6 +78,9 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      .addCase(fetchUser.pending, (state: AuthState) => {
+          state.tryToFetch =  true;
+      })
       .addCase(fetchUser.fulfilled, (state: AuthState, action) => {
         state.wasLoaded = true;
         state.tryToFetch = false;
@@ -103,6 +108,6 @@ const authSlice = createSlice({
   },
 });
 
-export const { logoutUser, acceptInv, removeInv, foundOrganization } =
+export const { logoutUser, acceptInv, removeInv, foundOrganization, setToken } =
   authSlice.actions;
 export const authReducer = authSlice.reducer;

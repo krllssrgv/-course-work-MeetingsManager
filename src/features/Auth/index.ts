@@ -5,6 +5,7 @@ export {
   acceptInv,
   removeInv,
   foundOrganization,
+  setToken
 } from './model/authSlice';
 export type { AuthState } from './model/authSlice';
 export {
@@ -16,3 +17,4 @@ export {
 export { useInvitations } from './model/useInvitations';
 export { useOwner } from './model/useOwner';
 export { useOrganizations } from './model/useOrganizations';
+export { useToken } from './model/useToken';

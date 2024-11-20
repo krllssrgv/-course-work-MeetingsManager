@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { TrackJS } from 'trackjs';
-import { fetchUser } from '@features';
+import Cookies from 'js-cookie';
+import { setToken } from '@features';
 import { useAppDispatch, API_URL, checkSpace, metrics } from '@shared';
 
 export const useLogin = () => {
@@ -35,7 +36,6 @@ export const useLogin = () => {
     try {
       const response = await fetch(`${API_URL}auth/login`, {
         method: 'POST',
-        credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -46,8 +46,10 @@ export const useLogin = () => {
       });
 
       if (response.ok) {
-        dispatch(fetchUser());
+        const json = await response.json();
         setLoading(false);
+        Cookies.set('access_token', json.access_token);
+        dispatch(setToken(json.access_token));
       } else {
         setLoading(false);
         const json = await response.json();

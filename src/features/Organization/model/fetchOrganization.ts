@@ -4,11 +4,14 @@ import { API_URL } from '@shared';
 
 export const fetchOrganization = createAsyncThunk(
   'organization/fetchOrganization',
-  async (id: number, { rejectWithValue }) => {
+  async (id: number, { rejectWithValue, getState }) => {
+    const state = getState() as RootState;
     try {
       const response = await fetch(`${API_URL}act/get_org/${id}`, {
         method: 'GET',
-        credentials: 'include',
+        headers: {
+          'Authorization': `Bearer ${state.auth.token}`
+        }
       });
 
       if (response.ok) {

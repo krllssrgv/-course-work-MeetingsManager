@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { TrackJS } from 'trackjs';
-import { createMeeting } from '@features';
+import { createMeeting, useToken } from '@features';
 import {
   API_URL,
   APP_ROUTES,
@@ -13,6 +13,7 @@ import {
 export const useCreate = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const { header } = useToken();
   const { id } = useParams();
   const orgID = id === undefined ? id : Number(id);
 
@@ -77,9 +78,9 @@ export const useCreate = () => {
     try {
       const response = await fetch(`${API_URL}act/create_meeting`, {
         method: 'POST',
-        credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
+          ...header
         },
         body: JSON.stringify({
           organization_id: orgID,

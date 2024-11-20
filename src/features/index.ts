@@ -12,6 +12,8 @@ export {
   useOwner,
   useOrganizations,
   foundOrganization,
+  setToken,
+  useToken
 } from './Auth';
 export type { AuthState } from './Auth';
 

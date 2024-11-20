@@ -16,5 +16,17 @@ export default defineConfig({
         setupFiles: ['./setup-tests.ts'],
         include: ['src/**/*.{test,spec}.{ts,tsx}'],
         exclude: ['node_modules'],
+        coverage: {
+            include: [
+              'src/**/*.ts',
+              'src/**/*.tsx'
+            ],
+            exclude: [
+              'src/**/index.ts',
+              '**/*.d.ts'
+            ],
+            // reporter: ['text', 'html'],
+            reporter: ['text'],
+        },
     },
 });

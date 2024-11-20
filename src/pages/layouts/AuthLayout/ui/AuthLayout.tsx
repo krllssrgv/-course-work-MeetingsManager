@@ -1,27 +1,31 @@
 import { useEffect } from 'react';
 import { Outlet, useLocation, Link, Navigate } from 'react-router-dom';
 import cn from 'classnames';
-import { selectUserAuth, fetchUser } from '@features';
+import Cookies from 'js-cookie'; 
+import { selectUserAuth, fetchUser, setToken } from '@features';
 import { APP_ROUTES, useAppSelector, useAppDispatch, Waiting } from '@shared';
 import styles from './AuthLayout.module.scss';
 
 export const AuthLayout = () => {
   const location = useLocation();
-  const fromPage = location.state?.from;
   const user = useAppSelector(selectUserAuth);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (!user.wasLoaded) {
+    const token = Cookies.get('access_token');
+    if (token && (!user.token)) {
+      dispatch(setToken(token));
+    }
+  }, [dispatch, user.token]);
+
+  useEffect(() => {
+    if ((!user.wasLoaded) && (user.token)) {
       dispatch(fetchUser());
     }
-  }, [dispatch, user.wasLoaded]);
+  }, [dispatch, user.token, user.wasLoaded]);
 
   if (user.wasLoaded) {
-    const to = user.itWasLogout
-      ? APP_ROUTES.organizations
-      : fromPage || APP_ROUTES.organizations;
-    return <Navigate to={to} replace />;
+    return <Navigate to={APP_ROUTES.organizations} replace />;
   } else {
     if (user.tryToFetch) {
       return <Waiting />;

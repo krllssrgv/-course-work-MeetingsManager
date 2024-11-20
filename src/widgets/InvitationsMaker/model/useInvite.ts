@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { TrackJS } from 'trackjs';
+import { useToken } from '@features';
 import { checkSpace, API_URL, metrics } from '@shared';
 
 export const useInvite = () => {
+  const { header } = useToken();
   const { id } = useParams();
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
@@ -37,6 +39,7 @@ export const useInvite = () => {
         credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
+          ...header
         },
         body: JSON.stringify({
           to_user: email,

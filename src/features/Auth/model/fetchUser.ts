@@ -4,11 +4,14 @@ import { API_URL } from '@shared';
 
 export const fetchUser = createAsyncThunk(
   'auth/fetchUser',
-  async (_, { rejectWithValue }) => {
+  async (_, { rejectWithValue, getState }) => {
+    const state = getState() as RootState;
     try {
       const response = await fetch(`${API_URL}auth/get_user`, {
         method: 'GET',
-        credentials: 'include',
+        headers: {
+          'Authorization': `Bearer ${state.auth.token}`
+        }
       });
 
       if (response.ok) {

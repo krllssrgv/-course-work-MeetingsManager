@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TrackJS } from 'trackjs';
-import { foundOrganization } from '@features';
+import { foundOrganization, useToken } from '@features';
 import {
   API_URL,
   useAppDispatch,
@@ -13,6 +13,7 @@ import {
 export const useFound = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const { header } = useToken();
 
   const [name, setName] = useState('');
 
@@ -49,6 +50,7 @@ export const useFound = () => {
         credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
+          ...header
         },
         body: JSON.stringify({
           name: name,

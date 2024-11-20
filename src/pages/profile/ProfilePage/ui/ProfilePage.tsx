@@ -1,11 +1,10 @@
-import { useEffect, useState } from 'react';
-import { TrackJS } from 'trackjs';
+import { useEffect } from 'react';
+import Cookies from 'js-cookie';
 import { selectUserData, logoutUser, resetState } from '@features';
 import {
   useAppSelector,
   useAppDispatch,
   AppButton,
-  API_URL,
   metrics,
 } from '@shared';
 import styles from './ProfilePage.module.scss';
@@ -13,36 +12,16 @@ import styles from './ProfilePage.module.scss';
 export const ProfilePage = () => {
   const user = useAppSelector(selectUserData);
   const dispatch = useAppDispatch();
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     document.title = 'Профиль';
   }, []);
 
-  const onLogout = () => {
-    const fetchLogout = async () => {
-      setLoading(true);
+  const handleLogout = async () => {
       metrics.metricLogout();
-
-      try {
-        const response = await fetch(`${API_URL}auth/logout`, {
-          method: 'POST',
-          credentials: 'include',
-        });
-        setLoading(false);
-
-        if (response.ok) {
-          dispatch(logoutUser());
-          dispatch(resetState());
-        }
-      } catch (error) {
-        setLoading(false);
-        const e = error as Error;
-        TrackJS.track(e);
-      }
-    };
-
-    fetchLogout();
+      Cookies.remove('access_token');
+      dispatch(logoutUser());
+      dispatch(resetState());
   };
 
   return (
@@ -52,9 +31,9 @@ export const ProfilePage = () => {
       <p className={styles.data}>{user.fathername}</p>
       <AppButton
         text="Выйти"
-        onClick={onLogout}
-        loading={loading}
-        negative={true}
+        onClick={handleLogout}
+        loading={false}
+        negative
       />
     </div>
   );

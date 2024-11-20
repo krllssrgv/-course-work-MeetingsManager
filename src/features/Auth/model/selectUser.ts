@@ -5,7 +5,7 @@ export const selectUserAuth = createSelector(
   (auth) => ({
     wasLoaded: auth.wasLoaded,
     tryToFetch: auth.tryToFetch,
-    itWasLogout: auth.itWasLogout,
+    token: auth.token
   })
 );
 

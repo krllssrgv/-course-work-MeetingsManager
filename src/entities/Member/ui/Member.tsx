@@ -1,17 +1,14 @@
 import { AppButton } from '@shared';
-import { useRemoveMember } from '../model/useRemoveMember';
 import styles from './Member.module.scss';
 
 type Props = {
   id: number;
   fullName: string;
   email: string;
+  handleRemove: (id: number) => void;
 };
 
-export const Member = ({ id, fullName, email }: Props) => {
-  const { handleRemove } = useRemoveMember();
-  console.log({ id, fullName, email });
-
+export const Member = ({ id, fullName, email, handleRemove }: Props) => {
   return (
     <div className={styles.member}>
       <div className={styles.data}>

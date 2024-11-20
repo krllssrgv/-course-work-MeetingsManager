@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { TrackJS } from 'trackjs';
+import { useToken } from './useToken';
 import { useAppDispatch, useAppSelector, API_URL } from '@shared';
 import { acceptInv, removeInv } from './authSlice';
 import { selectUserInvs } from './selectUser';
 
 export const useInvitations = () => {
   const dispatch = useAppDispatch();
+  const { header } = useToken();
   const invitations = useAppSelector(selectUserInvs);
   const [acceptLoading, setAcceptLoading] = useState(false);
   const [rejectLoading, setRejectLoading] = useState(false);
@@ -16,7 +18,7 @@ export const useInvitations = () => {
     try {
       const response = await fetch(`${API_URL}act/accept_inv/${id}`, {
         method: 'POST',
-        credentials: 'include',
+        headers: header
       });
 
       if (response.ok) {
@@ -46,7 +48,7 @@ export const useInvitations = () => {
     try {
       const response = await fetch(`${API_URL}act/reject_inv/${id}`, {
         method: 'POST',
-        credentials: 'include',
+        headers: header
       });
       setRejectLoading(false);
 
