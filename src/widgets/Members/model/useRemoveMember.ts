@@ -8,7 +8,6 @@ export const useRemoveMember = () => {
   const { id } = useParams();
   const organizationID = Number(id);
 
-
   const handleRemove = async (id: number) => {
     try {
       const response = await fetch(`${API_URL}act/remove_member`, {

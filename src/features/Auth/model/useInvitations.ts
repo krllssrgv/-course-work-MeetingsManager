@@ -18,7 +18,7 @@ export const useInvitations = () => {
     try {
       const response = await fetch(`${API_URL}act/accept_inv/${id}`, {
         method: 'POST',
-        headers: header
+        headers: header,
       });
 
       if (response.ok) {
@@ -48,7 +48,7 @@ export const useInvitations = () => {
     try {
       const response = await fetch(`${API_URL}act/reject_inv/${id}`, {
         method: 'POST',
-        headers: header
+        headers: header,
       });
       setRejectLoading(false);
 

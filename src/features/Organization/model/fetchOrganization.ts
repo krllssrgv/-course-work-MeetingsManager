@@ -10,8 +10,8 @@ export const fetchOrganization = createAsyncThunk(
       const response = await fetch(`${API_URL}act/get_org/${id}`, {
         method: 'GET',
         headers: {
-          'Authorization': `Bearer ${state.auth.token}`
-        }
+          Authorization: `Bearer ${state.auth.token}`,
+        },
       });
 
       if (response.ok) {

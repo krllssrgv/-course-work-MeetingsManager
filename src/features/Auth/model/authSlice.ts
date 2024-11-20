@@ -2,7 +2,6 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchUser } from './fetchUser';
 
-
 type Invitation = {
   id: number;
   organization: string;
@@ -79,7 +78,7 @@ const authSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchUser.pending, (state: AuthState) => {
-          state.tryToFetch =  true;
+        state.tryToFetch = true;
       })
       .addCase(fetchUser.fulfilled, (state: AuthState, action) => {
         state.wasLoaded = true;

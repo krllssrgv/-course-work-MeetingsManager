@@ -8,12 +8,7 @@ export const GeneralLayout = () => {
   const user = useAppSelector(selectUserAuth);
 
   if (!user.wasLoaded) {
-    return (
-      <Navigate
-        to={APP_ROUTES.login}
-        replace
-      />
-    );
+    return <Navigate to={APP_ROUTES.login} replace />;
   } else {
     return (
       <div className={styles.container}>

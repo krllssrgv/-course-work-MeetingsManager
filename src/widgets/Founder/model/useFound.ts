@@ -50,7 +50,7 @@ export const useFound = () => {
         credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
-          ...header
+          ...header,
         },
         body: JSON.stringify({
           name: name,

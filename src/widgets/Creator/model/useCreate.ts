@@ -80,7 +80,7 @@ export const useCreate = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          ...header
+          ...header,
         },
         body: JSON.stringify({
           organization_id: orgID,
