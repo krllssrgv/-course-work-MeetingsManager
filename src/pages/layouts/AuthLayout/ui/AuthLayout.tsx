@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Outlet, useLocation, Link, Navigate } from 'react-router-dom';
 import cn from 'classnames';
-import Cookies from 'js-cookie'; 
+import Cookies from 'js-cookie';
 import { selectUserAuth, fetchUser, setToken } from '@features';
 import { APP_ROUTES, useAppSelector, useAppDispatch, Waiting } from '@shared';
 import styles from './AuthLayout.module.scss';
@@ -13,13 +13,13 @@ export const AuthLayout = () => {
 
   useEffect(() => {
     const token = Cookies.get('access_token');
-    if (token && (!user.token)) {
+    if (token && !user.token) {
       dispatch(setToken(token));
     }
   }, [dispatch, user.token]);
 
   useEffect(() => {
-    if ((!user.wasLoaded) && (user.token)) {
+    if (!user.wasLoaded && user.token) {
       dispatch(fetchUser());
     }
   }, [dispatch, user.token, user.wasLoaded]);

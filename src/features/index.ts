@@ -13,7 +13,7 @@ export {
   useOrganizations,
   foundOrganization,
   setToken,
-  useToken
+  useToken,
 } from './Auth';
 export type { AuthState } from './Auth';
 

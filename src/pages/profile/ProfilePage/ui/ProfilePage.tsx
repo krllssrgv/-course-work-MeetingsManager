@@ -1,12 +1,7 @@
 import { useEffect } from 'react';
 import Cookies from 'js-cookie';
 import { selectUserData, logoutUser, resetState } from '@features';
-import {
-  useAppSelector,
-  useAppDispatch,
-  AppButton,
-  metrics,
-} from '@shared';
+import { useAppSelector, useAppDispatch, AppButton, metrics } from '@shared';
 import styles from './ProfilePage.module.scss';
 
 export const ProfilePage = () => {
@@ -18,10 +13,10 @@ export const ProfilePage = () => {
   }, []);
 
   const handleLogout = async () => {
-      metrics.metricLogout();
-      Cookies.remove('access_token');
-      dispatch(logoutUser());
-      dispatch(resetState());
+    metrics.metricLogout();
+    Cookies.remove('access_token');
+    dispatch(logoutUser());
+    dispatch(resetState());
   };
 
   return (
@@ -29,12 +24,7 @@ export const ProfilePage = () => {
       <p className={styles.data}>{user.name}</p>
       <p className={styles.data}>{user.lastname}</p>
       <p className={styles.data}>{user.fathername}</p>
-      <AppButton
-        text="Выйти"
-        onClick={handleLogout}
-        loading={false}
-        negative
-      />
+      <AppButton text="Выйти" onClick={handleLogout} loading={false} negative />
     </div>
   );
 };

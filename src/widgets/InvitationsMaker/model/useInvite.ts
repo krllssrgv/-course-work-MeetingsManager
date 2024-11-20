@@ -39,7 +39,7 @@ export const useInvite = () => {
         credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
-          ...header
+          ...header,
         },
         body: JSON.stringify({
           to_user: email,

@@ -5,7 +5,7 @@ export {
   acceptInv,
   removeInv,
   foundOrganization,
-  setToken
+  setToken,
 } from './model/authSlice';
 export type { AuthState } from './model/authSlice';
 export {
