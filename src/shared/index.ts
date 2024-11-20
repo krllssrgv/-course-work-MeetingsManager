@@ -14,8 +14,8 @@ export { MenuLink } from './ui/MenuLink';
 export { AppButton } from './ui/AppButton';
 export { Waiting } from './ui/Waiting';
 
-// Model
-export { checkSpace } from './model';
+// Utils
+export { checkSpace, metrics } from './utils';
 
 // Img
 export { default as orangeLoadingImg } from './assets/orange_loading.png';

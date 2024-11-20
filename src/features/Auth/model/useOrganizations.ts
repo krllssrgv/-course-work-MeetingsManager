@@ -2,9 +2,9 @@ import { selectUserOrgs } from './selectUser';
 import { useAppSelector } from '@shared';
 
 export const useOrganizations = () => {
-    const organizations = useAppSelector(selectUserOrgs);
+  const organizations = useAppSelector(selectUserOrgs);
 
-    return {
-        organizations,
-    };
+  return {
+    organizations,
+  };
 };

@@ -1,17 +1,17 @@
 .headline {
-    font-size: 22px;
-    font-weight: bold;
+  font-size: 22px;
+  font-weight: bold;
 }
 
 .meetings {
-    margin-top: 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
 @media (max-width: 600px) {
-    .headline {
-        font-size: 18px;
-    }
+  .headline {
+    font-size: 18px;
+  }
 }

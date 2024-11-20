@@ -4,6 +4,8 @@ stages:
   - install
   - lint
   - test
+  - build
+  - deploy
 
 install:
   stage: install
@@ -27,3 +29,25 @@ test:
     - npm run test
   dependencies:
     - install
+
+build:
+  stage: build
+  script:
+    - npm run build
+  dependencies:
+    - install
+  artifacts:
+    paths:
+      - public/
+
+pages:
+  stage: deploy
+  only:
+    - master
+  script:
+    - echo "Deploying to GitLab Pages"
+  dependencies:
+    - build
+  artifacts:
+    paths:
+      - public

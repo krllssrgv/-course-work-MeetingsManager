@@ -1,23 +1,23 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 600px;
 }
 
 .btn {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
 }
 
 .comment {
-    font-size: 18px;
-    color: #f00;
+  font-size: 18px;
+  color: #f00;
 }
 
 @media (max-width: 600px) {
-    .comment {
-        font-size: 15px;
-    }
+  .comment {
+    font-size: 15px;
+  }
 }

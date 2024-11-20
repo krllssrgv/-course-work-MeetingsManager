@@ -1,16 +1,16 @@
 .data {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    word-wrap: break-word;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  word-wrap: break-word;
 
-    &:last-of-type {
-        margin-bottom: 40px;
-    }
+  &:last-of-type {
+    margin-bottom: 40px;
+  }
 }
 
 @media (max-width: 1024px) {
-    .data {
-        font-size: 20px;
-    }
+  .data {
+    font-size: 20px;
+  }
 }

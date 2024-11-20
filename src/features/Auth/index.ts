@@ -1,17 +1,17 @@
 export { fetchUser } from './model/fetchUser';
 export {
-    authReducer,
-    logoutUser,
-    acceptInv,
-    removeInv,
-    foundOrganization,
+  authReducer,
+  logoutUser,
+  acceptInv,
+  removeInv,
+  foundOrganization,
 } from './model/authSlice';
 export type { AuthState } from './model/authSlice';
 export {
-    selectUserAuth,
-    selectUserData,
-    selectUserInvs,
-    selectUserOrgs,
+  selectUserAuth,
+  selectUserData,
+  selectUserInvs,
+  selectUserOrgs,
 } from './model/selectUser';
 export { useInvitations } from './model/useInvitations';
 export { useOwner } from './model/useOwner';

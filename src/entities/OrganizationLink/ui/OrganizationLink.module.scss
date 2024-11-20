@@ -1,33 +1,33 @@
 .organization {
-    display: block;
-    color: #000;
-    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
-    width: 100%;
-    padding: 10px;
-    text-decoration: none;
-    border-radius: 10px;
-    font-size: 24px;
-    font-weight: bold;
+  display: block;
+  color: #000;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 10px;
+  font-size: 24px;
+  font-weight: bold;
 
-    :hover {
-        cursor: pointer;
-    }
+  :hover {
+    cursor: pointer;
+  }
 }
 
 @media (max-width: 1024px) {
-    .organization {
-        font-size: 22px;
-    }
+  .organization {
+    font-size: 22px;
+  }
 }
 
 @media (max-width: 768px) {
-    .organization {
-        font-size: 20px;
-    }
+  .organization {
+    font-size: 20px;
+  }
 }
 
 @media (max-width: 600px) {
-    .organization {
-        font-size: 18px;
-    }
+  .organization {
+    font-size: 18px;
+  }
 }
