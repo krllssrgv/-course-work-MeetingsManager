@@ -1,3 +1,3 @@
 export const checkSpace = (str: string) => {
-    return !!str.trim().length;
+  return !!str.trim().length;
 };

@@ -1,50 +1,69 @@
-# React + TypeScript + Vite
+Савин Кирилл Сергеевич
+Meetings Manager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Созданные пользователи:
 
-Currently, two official plugins are available:
 
--   [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
--   [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Это приложение помогает организовывать различные мероприятия и встречи внутри компании и отслеживать их.
+Есть три основные сущности:
+- пользователи
+- организации
+- мероприятия
 
-## Expanding the ESLint configuration
+В текущей реализации пользователи могут:
+- создавать организации
+- создавать мероприятия
+- принимать и отклонять приглашения в другие организации
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Пользователи, являющиеся создателями организации, могут:
+- приглашать и удалять других пользователей в те организации, которые они создали
 
--   Configure the top-level `parserOptions` property like this:
 
-```js
-export default tseslint.config({
-    languageOptions: {
-        // other options...
-        parserOptions: {
-            project: ['./tsconfig.node.json', './tsconfig.app.json'],
-            tsconfigRootDir: import.meta.dirname,
-        },
-    },
-});
-```
+Авторизация включает в себя процесс регистрации и входа
+Для регистрации необходимо указать:
+- email
+- пароль
+- пароль повторно
+- имя
+- фамилию
+- отчество
 
--   Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
--   Optionally add `...tseslint.configs.stylisticTypeChecked`
--   Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Для входе необходимо указать:
+- email
+- пароль
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react';
 
-export default tseslint.config({
-    // Set the react version
-    settings: { react: { version: '18.3' } },
-    plugins: {
-        // Add the react plugin
-        react,
-    },
-    rules: {
-        // other rules...
-        // Enable its recommended rules
-        ...react.configs.recommended.rules,
-        ...react.configs['jsx-runtime'].rules,
-    },
-});
-```
+В приложении пользователю доступны следующие страницы:
+- организации - страница со списком организаций, в которых он состоит (по сути является главное страницей приложения)
+- создание - страница, где можно создать свою организацию
+- профиль - страница с информацией о профиле
+- приглашения - страница со списком активных приглашений пользователя в другие организации
+- организация - страница со встречами в какой-то организации (в ссылке используется параметр id для определения организации)
+- создать встречу - страница для создания встречи (привязана к параметру id)
+- участники (для владельца) - страница, на которой можно просматривать текущих участников и отправлять приглашения другим
+
+Для обработки ошибок и правильного отображения данных об организации используются защищенные маршруты и переадресация
+
+
+В качестве backend используется приложение на фреймворке flask
+**Возможно, это важный момент - backend полностью создавал я параллельно с frontend в течение времени выполнения курсовой работы
+База данных - sqlite
+Приложение развернуто на timeweb cloud
+Для авторизации использутся Cookie с флагом http-only для безопасного хранения JWT токена
+Настроены CORS для корректной работы API
+Есть встроенная панель администрирования базой данных и swagger
+
+
+На frontend используется UI-фреймворк React, state manager - Redux
+Для маршрутизации используется react-router
+Архитектура - FSD
+- app - верхний слой приложения с маршрутами и store
+- pages - слой страниц
+- widgets - слой виджетов (компонентов), из которых состоят страницы
+- features - слой со слайсами, селекторами и middleware
+- entities - слой с компонентами, которые связаны с сущнстями приожения
+- shared - слой с переиспользуемыми ui компонентами, файлами конфигурации, константами, изображениями и утилитами
+
+
+К приложению подключена Яндекс Метрика для сбора продуктовой статистики
+Для сбора ошибок используется TrackJS

@@ -1,78 +1,78 @@
 .header {
-    height: 70px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 0 10px;
-    gap: 30px;
+  height: 70px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 10px;
+  gap: 30px;
 }
 
 .logo {
-    width: 125px;
-    display: block;
-    color: #000;
-    text-decoration: none;
-    user-select: none;
+  width: 125px;
+  display: block;
+  color: #000;
+  text-decoration: none;
+  user-select: none;
 
-    p {
-        font-weight: bold;
-        font-size: 25px;
-    }
+  p {
+    font-weight: bold;
+    font-size: 25px;
+  }
 }
 
 .links {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-grow: 1;
-    height: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-grow: 1;
+  height: 40px;
 }
 
 .left_links {
-    display: flex;
-    flex-direction: row;
-    gap: 25px;
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
 }
 
 .profile_link {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 
-    img {
-        width: 100%;
-    }
+  img {
+    width: 100%;
+  }
 
-    &_active {
-        background-color: $light-main-color;
-    }
+  &_active {
+    background-color: $light-main-color;
+  }
 }
 
 @media (max-width: 768px) {
-    .header {
-        height: 55px;
-    }
+  .header {
+    height: 55px;
+  }
 
-    .logo {
-        display: none;
-    }
+  .logo {
+    display: none;
+  }
 }
 
 @media (max-width: 425px) {
-    .header {
-        padding: 0 4px;
-    }
+  .header {
+    padding: 0 4px;
+  }
 
-    .links {
-        height: 34px;
-    }
+  .links {
+    height: 34px;
+  }
 
-    .left_links {
-        gap: 10px;
-    }
+  .left_links {
+    gap: 10px;
+  }
 
-    .profile_link {
-        width: 34px;
-        height: 34px;
-    }
+  .profile_link {
+    width: 34px;
+    height: 34px;
+  }
 }

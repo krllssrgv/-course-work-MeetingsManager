@@ -1,65 +1,69 @@
 import { useState } from 'react';
+import { TrackJS } from 'trackjs';
 import { useAppDispatch, useAppSelector, API_URL } from '@shared';
 import { acceptInv, removeInv } from './authSlice';
 import { selectUserInvs } from './selectUser';
 
 export const useInvitations = () => {
-    const dispatch = useAppDispatch();
-    const invitations = useAppSelector(selectUserInvs);
-    const [acceptLoading, setAcceptLoading] = useState(false);
-    const [rejectLoading, setRejectLoading] = useState(false);
+  const dispatch = useAppDispatch();
+  const invitations = useAppSelector(selectUserInvs);
+  const [acceptLoading, setAcceptLoading] = useState(false);
+  const [rejectLoading, setRejectLoading] = useState(false);
 
-    const handleAcceptInvitation = async (id: number) => {
-        setAcceptLoading(true);
+  const handleAcceptInvitation = async (id: number) => {
+    setAcceptLoading(true);
 
-        try {
-            const response = await fetch(`${API_URL}act/accept_inv/${id}`, {
-                method: 'POST',
-                credentials: 'include',
-            });
+    try {
+      const response = await fetch(`${API_URL}act/accept_inv/${id}`, {
+        method: 'POST',
+        credentials: 'include',
+      });
 
-            if (response.ok) {
-                const json = await response.json();
-                setAcceptLoading(false);
-                dispatch(
-                    acceptInv({
-                        id: id,
-                        org: {
-                            id: json.id,
-                            name: json.name,
-                            owned: json.owned,
-                        },
-                    })
-                );
-            }
-        } catch {
-            setAcceptLoading(false);
-        }
-    };
+      if (response.ok) {
+        const json = await response.json();
+        setAcceptLoading(false);
+        dispatch(
+          acceptInv({
+            id: id,
+            org: {
+              id: json.id,
+              name: json.name,
+              owned: json.owned,
+            },
+          })
+        );
+      }
+    } catch (error) {
+      setAcceptLoading(false);
+      const e = error as Error;
+      TrackJS.track(e);
+    }
+  };
 
-    const handleRejectInvitation = async (id: number) => {
-        setRejectLoading(true);
+  const handleRejectInvitation = async (id: number) => {
+    setRejectLoading(true);
 
-        try {
-            const response = await fetch(`${API_URL}act/reject_inv/${id}`, {
-                method: 'POST',
-                credentials: 'include',
-            });
-            setRejectLoading(false);
+    try {
+      const response = await fetch(`${API_URL}act/reject_inv/${id}`, {
+        method: 'POST',
+        credentials: 'include',
+      });
+      setRejectLoading(false);
 
-            if (response.ok) {
-                dispatch(removeInv(id));
-            }
-        } catch {
-            // Обработка ошибки
-        }
-    };
+      if (response.ok) {
+        dispatch(removeInv(id));
+      }
+    } catch (error) {
+      const e = error as Error;
+      TrackJS.track(e);
+    }
+  };
 
-    return {
-        invitations,
-        handleAcceptInvitation,
-        handleRejectInvitation,
-        acceptLoading,
-        rejectLoading,
-    };
+  return {
+    invitations,
+    handleAcceptInvitation,
+    handleRejectInvitation,
+    acceptLoading,
+    rejectLoading,
+  };
 };
